@@ -13,17 +13,15 @@ public class Main {
         weatherDataSubject.add(new CurrentConditionsDisplay());
         weatherDataSubject.add(new StatisticsDisplay());
 
-        WeatherDisplayDecorator weatherDisplayDecorator = new WindSpeedDecorator(new TemperatureUnitsDecorator(new PrecipitationDecorator(weatherDataSubject)));
+        WeatherDisplayDecorator weatherDisplayDecorator = weatherDataSubject;
 
         System.out.println("Weather without Decorator");
-        weatherDataSubject.setWeather(25.0,70.0);
+        System.out.println(weatherDisplayDecorator.display(25.0,70.0));
 
         System.out.println("--------------------------------");
 
+        weatherDisplayDecorator = new WindSpeedDecorator(new TemperatureUnitsDecorator(new PrecipitationDecorator(weatherDataSubject)));
         System.out.println("Weather with Decorator");
-        System.out.println(weatherDisplayDecorator.display(25.0,70.0));;
-
-
-
+        System.out.println(weatherDisplayDecorator.display(25.0,70.0));
     }
 }
